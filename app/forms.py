@@ -6,10 +6,10 @@ from app.modles import User
 
 
 class LoginForm(FlaskForm):
-	username = StringField('Username', validators=[DataRequired()])
-	password = PasswordField('Password', validators=[DataRequired()])
-	remember_me = BooleanField('Remember Me')
-	submit = SubmitField('Sign In')
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Remember Me')
+    submit = SubmitField('Sign In')
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -30,9 +30,9 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('Please use a different email address.')
 
 class EditProfileForm(FlaskForm):
-	username = StringField('Username', validators=[DataRequired()])
-	about_me = TextAreaField('About_me', validators=[Length(min=0, max=140)])
-	submit = SubmitField('Submit')
+    username = StringField('Username', validators=[DataRequired()])
+    about_me = TextAreaField('About_me', validators=[Length(min=0, max=140)])
+    submit = SubmitField('Submit')
 
 
 class ResetPasswordRequestForm(FlaskForm):
@@ -40,6 +40,10 @@ class ResetPasswordRequestForm(FlaskForm):
     submit = SubmitField('Request Password Reset')
 
 class ResetPasswordForm(FlaskForm):
-	password = PasswordField('Password', validators=[DataRequired()])
-	password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
-	submit = SubmitField('Request Password Reset')
+    password = PasswordField('Password', validators=[DataRequired()])
+    password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Request Password Reset')
+
+class PostForm(FlaskForm):
+    post = TextAreaField('Say something', validators=[DataRequired(), Length(min=1, max=140)])
+    submit = SubmitField('Submit')
